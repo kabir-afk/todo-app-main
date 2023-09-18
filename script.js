@@ -1,12 +1,12 @@
 const todoInput = document.querySelector("#input-todo");
 const todoList = document.querySelector(".todo-list");
 let numOfItems = document.querySelector(".numOfItems");
-let numOfItemsComp = 0; //number of items completed
 
-// window.onload =
 function itemCount() {
-  console.log(numOfItemsComp);
-  numOfItems.innerText = todoList.childElementCount - numOfItemsComp - 1;
+  const totalListItems = document.querySelectorAll(".todo");
+  const completedItems = document.querySelectorAll(".completed");
+  const remainingItems = totalListItems.length - completedItems.length;
+  numOfItems.innerText = remainingItems;
 }
 
 function addCompletedStyles(inputElement) {
@@ -15,9 +15,11 @@ function addCompletedStyles(inputElement) {
   if (inputElement.checked) {
     iconCheck.classList.remove("checked");
     todo.classList.remove("completed");
+    itemCount();
   } else {
     iconCheck.classList.add("checked");
     todo.classList.add("completed");
+    itemCount();
   }
 }
 
@@ -27,6 +29,7 @@ function deleteTodo(e) {
 }
 
 function addtodo() {
+  //   console.log(todoList.childNodes);
   todoList.insertAdjacentHTML(
     "afterbegin",
     `<label class = "todo"><label class="checkbox"
@@ -37,4 +40,13 @@ function addtodo() {
   );
   itemCount();
   todoInput.value = "";
+}
+
+function clrComp() {
+  const totalListItems = document.querySelectorAll(".todo");
+  totalListItems.forEach((e) => {
+    if (e.classList.contains("completed")) {
+      e.remove();
+    }
+  });
 }
