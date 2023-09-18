@@ -58,7 +58,6 @@ body {
     height: 65px;
     background-color: $Very-Dark-Desaturated-Blue;
     color: $Light-Grayish-Blue;
-    border-radius: 10px;
 }
 
 .hero-container {
@@ -78,9 +77,10 @@ h1 {
 }
 
 .create-todo {
-    @include flex(none, center);
     // border: 2px solid yellowgreen;
+    @include flex(none, center);
     @include styles();
+    border-radius: 10px;
     padding: 1.25rem 1.5625rem;
     margin-top: 2em;
     margin-bottom: 2em;
@@ -91,7 +91,7 @@ h1 {
     @include flex(center, center);
     border-radius: 100px;
     overflow: hidden;
-    margin-right: 0.5em;
+    margin-right: 1.5em;
     height: fit-content;
 
     input {
@@ -118,6 +118,11 @@ h1 {
     input:checked+.custom-checkbox {
         border: none;
         background: transparent;
+    }
+
+    &:hover {
+        border: 2px solid transparent;
+        background: linear-gradient($Very-Dark-Desaturated-Blue, $Very-Dark-Desaturated-Blue) padding-box, $Check-Background border-box;
     }
 }
 
@@ -147,18 +152,32 @@ h1 {
 
     .todo {
         @include flex(none, center);
-        border: 1px solid;
-        border-color: $Very-Dark-Grayish-Blue;
+        border-top: 1px solid $Very-Dark-Grayish-Blue;
+        border-bottom: 1px solid $Very-Dark-Grayish-Blue;
         background-color: $Very-Dark-Desaturated-Blue;
         color: $Light-Grayish-Blue;
-        padding: 0.7em 1.5625em;
+        padding: 0.7em 1.5em;
+
+        button {
+            cursor: pointer;
+            margin-left: auto;
+            border: none;
+            outline: none;
+            box-shadow: none;
+            background: transparent;
+            display: none;
+        }
     }
-    
+
+    .completed {
+        color: $Dark-Grayish-Blue;
+        text-decoration: line-through
+    }
+
     .todo-options {
         @include styles();
-        border-radius: 0%;
+        // border-radius: 0%;
         color: $Dark-Grayish-Blue;
-        font-weight: 700;
         padding: 0em 1.5625em;
         @include flex(space-between, center);
 
@@ -180,6 +199,10 @@ h1 {
             &:active {
                 color: $Bright-Blue;
             }
+        }
+
+        .filter-sub-options {
+            font-weight: 700;
         }
     }
 }
