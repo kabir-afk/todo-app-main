@@ -19,7 +19,6 @@ body {
 }
 
 .hero-container {
-  border: 2px solid yellow;
   margin: 9vh auto;
   width: 38%;
 }
@@ -40,14 +39,17 @@ h1 {
   display: flex;
   justify-content: none;
   align-items: center;
-  border: 2px solid yellowgreen;
   width: 100%;
   height: 65px;
   background-color: hsl(235, 24%, 19%);
-  padding: 1.25rem 1.5625rem;
+  color: hsl(236, 33%, 92%);
   border-radius: 10px;
+  padding: 1.25rem 1.5625rem;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
-.create-todo .checkbox {
+
+.checkbox {
   border: 2px solid hsl(237, 14%, 26%);
   display: flex;
   justify-content: center;
@@ -58,31 +60,35 @@ h1 {
   height: -moz-fit-content;
   height: fit-content;
 }
-.create-todo .checkbox input {
+.checkbox input {
   display: none;
 }
-.create-todo .checkbox img {
+.checkbox img {
   margin: 0 50%;
   transform: translateX(-50%);
   visibility: hidden;
 }
-.create-todo .checkbox .custom-checkbox {
+.checkbox .checked {
+  visibility: visible;
+}
+.checkbox .custom-checkbox {
   width: 20px;
   aspect-ratio: 1;
   background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   cursor: pointer;
 }
-.create-todo .checkbox input:checked + .custom-checkbox {
+.checkbox input:checked + .custom-checkbox {
   border: none;
   background: transparent;
 }
-.create-todo .input-todo {
+
+.input-todo {
   padding: 0;
   width: 100%;
   height: -moz-max-content;
   height: max-content;
 }
-.create-todo .input-todo input {
+.input-todo input {
   width: 100%;
   border: none;
   outline: none;
@@ -91,4 +97,55 @@ h1 {
   font-family: inherit;
   font-size: inherit;
   caret-color: hsl(220, 98%, 61%);
+}
+
+.todo-list {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.todo-list .todo {
+  display: flex;
+  justify-content: none;
+  align-items: center;
+  border: 1px solid;
+  border-color: hsl(237, 14%, 26%);
+  background-color: hsl(235, 24%, 19%);
+  color: hsl(236, 33%, 92%);
+  padding: 0.7em 1.5625em;
+}
+.todo-list .todo-options {
+  width: 100%;
+  height: 65px;
+  background-color: hsl(235, 24%, 19%);
+  color: hsl(236, 33%, 92%);
+  border-radius: 10px;
+  border-radius: 0%;
+  color: hsl(234, 11%, 52%);
+  font-weight: 700;
+  padding: 0em 1.5625em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.todo-list .todo-options button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 1rem;
+  font-family: inherit;
+  color: inherit;
+  font-weight: inherit;
+}
+.todo-list .todo-options button:hover {
+  cursor: pointer;
+  color: hsl(0, 0%, 98%);
+}
+.todo-list .todo-options button:focus, .todo-list .todo-options button:active {
+  color: hsl(220, 98%, 61%);
+}
+
+p {
+  margin-top: 2em;
+  color: hsl(234, 11%, 52%);
+  transform: translateX(25%);
 }/*# sourceMappingURL=styles.css.map */
