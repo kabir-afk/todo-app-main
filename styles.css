@@ -116,6 +116,7 @@ h1 {
   background-color: hsl(235, 24%, 19%);
   color: hsl(236, 33%, 92%);
   padding: 0.7em 1.5em;
+  cursor: pointer;
 }
 .todo-list .todo button {
   cursor: pointer;
@@ -125,6 +126,9 @@ h1 {
   box-shadow: none;
   background: transparent;
   display: none;
+}
+.todo-list .todo:hover button {
+  display: block;
 }
 .todo-list .completed {
   color: hsl(234, 11%, 52%);

@@ -48,7 +48,7 @@
         </div>
         <div class="create-todo">
           <label class="checkbox"
-            ><input type="checkbox" checked onclick="addCheckIcon(this)"/><span
+            ><input type="checkbox" checked onchange="addCompletedStyles(this)" disabled/><span
               class="custom-checkbox"
               ><img src="images/icon-check.svg" alt="icon-check" /></span
           ></label>
@@ -60,7 +60,7 @@
           <div class="todo-options">
             <!-- Add dynamic number -->
             <div class="items-left">
-              0 items left
+              <span class="numOfItems">0</span> items left
             </div>
             <div class="filter-sub-options">
               <button>All</button>

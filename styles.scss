@@ -141,7 +141,6 @@ h1 {
         font-family: inherit;
         font-size: inherit;
         caret-color: $Bright-Blue ;
-        // font-size: 25px;
     }
 }
 
@@ -157,7 +156,7 @@ h1 {
         background-color: $Very-Dark-Desaturated-Blue;
         color: $Light-Grayish-Blue;
         padding: 0.7em 1.5em;
-
+        cursor: pointer;
         button {
             cursor: pointer;
             margin-left: auto;
@@ -166,6 +165,12 @@ h1 {
             box-shadow: none;
             background: transparent;
             display: none;
+        }
+
+        &:hover {
+            button {
+                display: block;
+            }
         }
     }
 
