@@ -1,0 +1,128 @@
+// ## Colors
+
+// ### Primary
+
+$Bright-Blue: hsl(220, 98%, 61%);
+// $Check-Background: linear-gradient(90deg,hsl(192, 100%, 67%) ,hsl(280, 87%, 65%));
+$Check-Background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+
+// ### Neutral
+
+// ### Light Theme
+
+$Very-Light-Gray: hsl(0, 0%, 98%);
+$Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
+$Light-Grayish-Blue: hsl(233, 11%, 84%);
+$Dark-Grayish-Blue: hsl(236, 9%, 61%);
+$Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+
+// ### Dark Theme
+
+$Very-Dark-Blue: hsl(235, 21%, 11%);
+$Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
+$Light-Grayish-Blue: hsl(234, 39%, 85%);
+$Light-Grayish-Blue : hsl(236, 33%, 92%); // (hover)
+$Dark-Grayish-Blue: hsl(234, 11%, 52%);
+$Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+$Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+}
+
+body {
+    // border: 2px solid brown;
+    background: url(images/bg-desktop-dark.jpg) $Very-Dark-Blue no-repeat;
+    background-size: 100vw 300px;
+    font-size: 1.125rem;
+    font-family: 'Josefin Sans', sans-serif;
+    height: 100vh;
+}
+
+@mixin flex($justify-content, $align-items) {
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+
+.hero-container {
+    border: 2px solid yellow;
+    margin: 9vh auto;
+    width: 38%;
+}
+
+.flex {
+    @include flex(space-between, center);
+}
+
+h1 {
+    text-transform: uppercase;
+    color: $Very-Light-Gray;
+    letter-spacing: 5px;
+}
+
+.create-todo {
+    @include flex(none, center);
+    border: 2px solid yellowgreen;
+    width: 100%;
+    height: 65px;
+    background-color: $Very-Dark-Desaturated-Blue;
+    padding: 1.25rem 1.5625rem;
+    border-radius: 10px;
+
+    .checkbox {
+        border: 2px solid $Very-Dark-Grayish-Blue;
+        @include flex(center, center);
+        border-radius: 100px;
+        overflow: hidden;
+        margin-right: 0.5em;
+        height: fit-content;
+
+        input {
+            display: none;
+        }
+        img{
+            margin: 0 50%;
+            transform: translateX(-50%);
+            visibility: hidden;
+        }
+        .custom-checkbox {
+            width: 20px;
+            aspect-ratio: 1;
+            background: $Check-Background;
+            cursor: pointer;
+        }
+        
+        input:checked+.custom-checkbox {
+            border: none;
+            background: transparent;
+        }
+    }
+
+    .input-todo {
+        // border: 2px solid blue;
+        padding: 0;
+        width: 100%;
+        height: max-content;
+
+        input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            color: $Light-Grayish-Blue;
+            font-family: inherit;
+            font-size: inherit;
+            caret-color: $Bright-Blue ;
+            // font-size: 25px;
+        }
+    }
+}
