@@ -12,15 +12,11 @@ function itemCount() {
 function addCompletedStyles(inputElement) {
   let todo = inputElement.closest(".todo");
   let iconCheck = todo.querySelector('img[alt="icon-check"]');
-  if (inputElement.checked) {
-    iconCheck.classList.remove("checked");
-    todo.classList.remove("completed");
-    itemCount();
-  } else {
-    iconCheck.classList.add("checked");
-    todo.classList.add("completed");
-    itemCount();
-  }
+  const isChecked = inputElement.checked;
+
+  iconCheck.classList.toggle("checked", !isChecked);
+  todo.classList.toggle("completed", !isChecked);
+  itemCount();
 }
 
 function deleteTodo(e) {
@@ -29,14 +25,13 @@ function deleteTodo(e) {
 }
 
 function addtodo() {
-  todoList.insertAdjacentHTML(
-    "afterbegin",
-    `<label class = "todo"><label class="checkbox"
+  const todoHTML = `<label class = "todo"><label class="checkbox"
   ><input type="checkbox" checked onclick="addCompletedStyles(this)"/><span
   class="custom-checkbox"
     ><img src="images/icon-check.svg" alt="icon-check" /></span
-></label>${todoInput.value}<button onclick = "deleteTodo(this)"><img src="images/icon-cross.svg" alt="icon-cross";"></button></label>`
-  );
+></label>${todoInput.value}<button onclick = "deleteTodo(this)"><img src="images/icon-cross.svg" alt="icon-cross";"></button></label>`;
+
+  todoList.insertAdjacentHTML("afterbegin", todoHTML);
   itemCount();
   todoInput.value = "";
 }
@@ -44,7 +39,7 @@ function addtodo() {
 function showActive() {
   const totalListItems = document.querySelectorAll(".todo");
   const completedItems = document.querySelectorAll(".completed");
-  let order , remainingOrder; 
+  let order, remainingOrder;
   order = remainingOrder = completedItems.length;
 
   for (let i = 0; i < totalListItems.length; i++) {
@@ -66,7 +61,7 @@ function showActive() {
 function showComp() {
   const totalListItems = document.querySelectorAll(".todo");
   const completedItems = document.querySelectorAll(".completed");
-  let order , remainingOrder; 
+  let order, remainingOrder;
   order = remainingOrder = completedItems.length;
 
   for (let i = 0; i < totalListItems.length; i++) {
