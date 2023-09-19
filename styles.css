@@ -1,8 +1,25 @@
+:root {
+  --Bright-Blue: hsl(220, 98%, 61%);
+  --Check-Background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  --Very-Light-Gray: hsl(0, 0%, 98%);
+  --Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
+  --Light-Grayish-Blue: hsl(233, 11%, 84%);
+  --Dark-Grayish-Blue: hsl(236, 9%, 61%);
+  --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+  --Very-Dark-Blue: hsl(235, 21%, 11%);
+  --Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
+  --Light-Grayish-Blue: hsl(234, 39%, 85%);
+  --Light-Grayish-Blue-Hover: hsl(236, 33%, 92%);
+  --Dark-Grayish-Blue: hsl(234, 11%, 52%);
+  --Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+  --Very-Dark-Grayish-Blue-Alt: hsl(237, 14%, 26%);
+}
+
 *,
 *::before,
 *::after {
   margin: 0;
-  padding: 0%;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -11,11 +28,15 @@ img {
 }
 
 body {
-  background: url(images/bg-desktop-dark.jpg) hsl(235, 21%, 11%) no-repeat;
+  background: url(images/bg-desktop-dark.jpg) var(--Very-Dark-Blue) no-repeat;
   background-size: 100vw 300px;
   font-size: 1.125rem;
   font-family: "Josefin Sans", sans-serif;
   height: 100vh;
+}
+
+.body-bg-light-mode {
+  background: url(images/bg-desktop-light.jpg) no-repeat;
 }
 
 .hero-container {
@@ -28,11 +49,24 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-
-h1 {
+.flex h1 {
   text-transform: uppercase;
-  color: hsl(0, 0%, 98%);
+  color: var(--Very-Light-Gray);
   letter-spacing: 5px;
+}
+.flex button {
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.light-mode {
+  --Very-Dark-Blue: var(--Very-Light-Gray);
+  --Very-Dark-Desaturated-Blue: var(--Very-Light-Grayish-Blue);
+  --Light-Grayish-Blue: var(--Light-Grayish-Blue);
+  --Dark-Grayish-Blue: var(--Dark-Grayish-Blue);
+  --Very-Dark-Grayish-Blue: var(--Very-Dark-Grayish-Blue);
 }
 
 .create-todo {
@@ -41,8 +75,8 @@ h1 {
   align-items: center;
   width: 100%;
   height: 65px;
-  background-color: hsl(235, 24%, 19%);
-  color: hsl(236, 33%, 92%);
+  background-color: var(--Very-Dark-Desaturated-Blue);
+  color: var(--Light-Grayish-Blue);
   border-radius: 10px;
   padding: 1.25rem 1.5625rem;
   margin-top: 2em;
@@ -50,7 +84,7 @@ h1 {
 }
 
 .checkbox {
-  border: 2px solid hsl(237, 14%, 26%);
+  border: 2px solid var(--Very-Dark-Grayish-Blue);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,7 +108,7 @@ h1 {
 .checkbox .custom-checkbox {
   width: 20px;
   aspect-ratio: 1;
-  background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background: var(--Check-Background);
   cursor: pointer;
 }
 .checkbox input:checked + .custom-checkbox {
@@ -83,7 +117,7 @@ h1 {
 }
 .checkbox:hover {
   border: 2px solid transparent;
-  background: linear-gradient(hsl(235, 24%, 19%), hsl(235, 24%, 19%)) padding-box, linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
+  background: linear-gradient(var(--Very-Dark-Desaturated-Blue), var(--Very-Dark-Desaturated-Blue)) padding-box, var(--Check-Background) border-box;
 }
 
 .input-todo {
@@ -97,10 +131,10 @@ h1 {
   border: none;
   outline: none;
   background-color: transparent;
-  color: hsl(236, 33%, 92%);
+  color: var(--Light-Grayish-Blue);
   font-family: inherit;
   font-size: inherit;
-  caret-color: hsl(220, 98%, 61%);
+  caret-color: var(--Bright-Blue);
 }
 
 .todo-list {
@@ -112,10 +146,10 @@ h1 {
   display: flex;
   justify-content: none;
   align-items: center;
-  border-top: 1px solid hsl(237, 14%, 26%);
-  border-bottom: 1px solid hsl(237, 14%, 26%);
-  background-color: hsl(235, 24%, 19%);
-  color: hsl(236, 33%, 92%);
+  border-top: 1px solid var(--Very-Dark-Grayish-Blue);
+  border-bottom: 1px solid var(--Very-Dark-Grayish-Blue);
+  background-color: var(--Very-Dark-Desaturated-Blue);
+  color: var(--Light-Grayish-Blue);
   padding: 0.7em 1.5em;
   cursor: pointer;
 }
@@ -132,15 +166,15 @@ h1 {
   display: block;
 }
 .todo-list .completed {
-  color: hsl(234, 11%, 52%);
+  color: var(--Dark-Grayish-Blue);
   text-decoration: line-through;
 }
 .todo-list .todo-options {
   width: 100%;
   height: 65px;
-  background-color: hsl(235, 24%, 19%);
-  color: hsl(236, 33%, 92%);
-  color: hsl(234, 11%, 52%);
+  background-color: var(--Very-Dark-Desaturated-Blue);
+  color: var(--Light-Grayish-Blue);
+  color: var(--Dark-Grayish-Blue);
   padding: 0em 1.5625em;
   display: flex;
   justify-content: space-between;
@@ -157,10 +191,10 @@ h1 {
 }
 .todo-list .todo-options button:hover {
   cursor: pointer;
-  color: hsl(0, 0%, 98%);
+  color: var(--Very-Light-Gray);
 }
 .todo-list .todo-options button:focus, .todo-list .todo-options button:active {
-  color: hsl(220, 98%, 61%);
+  color: var(--Bright-Blue);
 }
 .todo-list .todo-options .filter-sub-options {
   font-weight: 700;
@@ -168,6 +202,6 @@ h1 {
 
 p {
   margin-top: 2em;
-  color: hsl(234, 11%, 52%);
+  color: var(--Dark-Grayish-Blue);
   transform: translateX(25%);
 }/*# sourceMappingURL=styles.css.map */

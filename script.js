@@ -1,6 +1,17 @@
 const todoInput = document.querySelector("#input-todo");
 const todoList = document.querySelector(".todo-list");
 let numOfItems = document.querySelector(".numOfItems");
+let themeSwitcherBtn = document.querySelector(".themeSwitcherBtn");
+themeSwitcherBtn.addEventListener("click", () => {
+  console.log("hellow");
+  document.body.classList.toggle("light-mode");
+  themeSwitcherBtn.firstElementChild.src = document.body.classList.contains(
+    "light-mode"
+  )
+    ? "images/icon-moon.svg"
+    : "images/icon-sun.svg";
+  document.body.classList.toggle("body-bg-light-mode");
+});
 
 function itemCount() {
   const totalListItems = document.querySelectorAll(".todo");
