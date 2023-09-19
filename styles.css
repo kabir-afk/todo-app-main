@@ -106,6 +106,7 @@ h1 {
 .todo-list {
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
 .todo-list .todo {
   display: flex;

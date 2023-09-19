@@ -22,12 +22,12 @@
 
     <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
     <style>
-      footer {
+      /* footer {
         position: absolute;
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-      }
+      } */
       .attribution {
         font-size: 11px;
         text-align: center;
@@ -48,12 +48,15 @@
         </div>
         <div class="create-todo">
           <label class="checkbox"
-            ><input type="checkbox" checked onchange="addCompletedStyles(this)" disabled/><span
-              class="custom-checkbox"
+            ><input
+              type="checkbox"
+              checked
+              onchange="addCompletedStyles(this)"
+              disabled /><span class="custom-checkbox"
               ><img src="images/icon-check.svg" alt="icon-check" /></span
           ></label>
           <label class="input-todo"
-            ><input type="text" id="input-todo" onchange = "addtodo()"
+            ><input type="text" id="input-todo" onchange="addtodo()"
           /></label>
         </div>
         <div class="todo-list">
@@ -63,9 +66,9 @@
               <span class="numOfItems">0</span> items left
             </div>
             <div class="filter-sub-options">
-              <button>All</button>
-              <button>Active</button>
-              <button>Completed</button>
+              <button onclick="showAll()">All</button>
+              <button onclick="showActive()">Active</button>
+              <button onclick="showComp()">Completed</button>
             </div>
             <button onclick="clrComp()">Clear Completed</button>
           </div>
@@ -73,7 +76,7 @@
         <p>Drag and drop to reorder list</p>
       </div>
     </main>
-    <footer>
+    <!-- <footer>
       <div class="attribution">
         Challenge by
         <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
@@ -83,7 +86,13 @@
           >solitary_coder</a
         >.
       </div>
-    </footer>
+    </footer> -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="script.js"></script>
   </body>
 </html>

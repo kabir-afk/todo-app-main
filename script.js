@@ -29,7 +29,6 @@ function deleteTodo(e) {
 }
 
 function addtodo() {
-  //   console.log(todoList.childNodes);
   todoList.insertAdjacentHTML(
     "afterbegin",
     `<label class = "todo"><label class="checkbox"
@@ -41,12 +40,43 @@ function addtodo() {
   itemCount();
   todoInput.value = "";
 }
+// function showActive() {
+//   const totalListItems = document.querySelectorAll(".todo");
+//   totalListItems.forEach((e) => {
+//     if (e.classList.contains("completed")) {
+//         e.style.display = "none";
+//     }
+//   });
+// }
+function showComp() {
+  const totalListItems = document.querySelectorAll(".todo");
+  const completedItems = document.querySelectorAll(".completed");
+  let order = completedItems.length;
+  let remainingOrder = completedItems.length;
 
+  for (let i = 0; i < totalListItems.length; i++) {
+    let e = totalListItems[i];
+    if (e.classList.contains("completed")) {
+      gsap.to(e, {
+        y: e.offsetTop - 2 * 50 * i + 50 * --order,
+        duration: 0.5,
+      });
+    } else if (!e.classList.contains("completed")) {
+      gsap.to(e, {
+        y: e.offsetTop - 2 * 50 * i + 50 * remainingOrder++,
+        duration: 0.5,
+      });
+    }
+  }
+}
 function clrComp() {
   const totalListItems = document.querySelectorAll(".todo");
   totalListItems.forEach((e) => {
     if (e.classList.contains("completed")) {
-      e.remove();
+      gsap.to(e, {
+        scale: 1.25,
+        duration: 0.75,
+      });
     }
   });
 }
