@@ -40,28 +40,43 @@ function addtodo() {
   itemCount();
   todoInput.value = "";
 }
-// function showActive() {
-//   const totalListItems = document.querySelectorAll(".todo");
-//   totalListItems.forEach((e) => {
-//     if (e.classList.contains("completed")) {
-//         e.style.display = "none";
-//     }
-//   });
-// }
+
+function showActive() {
+  const totalListItems = document.querySelectorAll(".todo");
+  const completedItems = document.querySelectorAll(".completed");
+  let order , remainingOrder; 
+  order = remainingOrder = completedItems.length;
+
+  for (let i = 0; i < totalListItems.length; i++) {
+    let e = totalListItems[i];
+    if (e.classList.contains("completed")) {
+      gsap.to(e, {
+        y: e.offsetTop - 2 * 50 * i + 50 * ++order,
+        duration: 0.5,
+      });
+    } else {
+      gsap.to(e, {
+        y: e.offsetTop - 2 * 50 * i + 50 * remainingOrder--,
+        duration: 0.75,
+      });
+    }
+  }
+}
+
 function showComp() {
   const totalListItems = document.querySelectorAll(".todo");
   const completedItems = document.querySelectorAll(".completed");
-  let order = completedItems.length;
-  let remainingOrder = completedItems.length;
+  let order , remainingOrder; 
+  order = remainingOrder = completedItems.length;
 
   for (let i = 0; i < totalListItems.length; i++) {
     let e = totalListItems[i];
     if (e.classList.contains("completed")) {
       gsap.to(e, {
         y: e.offsetTop - 2 * 50 * i + 50 * --order,
-        duration: 0.5,
+        duration: 0.75,
       });
-    } else if (!e.classList.contains("completed")) {
+    } else {
       gsap.to(e, {
         y: e.offsetTop - 2 * 50 * i + 50 * remainingOrder++,
         duration: 0.5,
@@ -70,13 +85,11 @@ function showComp() {
   }
 }
 function clrComp() {
-  const totalListItems = document.querySelectorAll(".todo");
-  totalListItems.forEach((e) => {
+  const totaltItems = document.querySelectorAll(".todo");
+  totaltItems.forEach((e) => {
     if (e.classList.contains("completed")) {
-      gsap.to(e, {
-        scale: 1.25,
-        duration: 0.75,
-      });
+      e.remove();
     }
+    showComp();
   });
 }
