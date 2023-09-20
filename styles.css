@@ -140,6 +140,9 @@ body {
 .todo-list .todo:hover button {
   display: block;
 }
+.todo-list .hidden {
+  display: none;
+}
 .todo-list .completed {
   color: hsl(234, 11%, 52%);
   text-decoration: line-through;

@@ -1,6 +1,7 @@
 const todoInput = document.querySelector("#input-todo");
 const todoList = document.querySelector(".todo-list");
 let numOfItems = document.querySelector(".numOfItems");
+// const filter = document.querySelector(".filter-sub-options");
 let themeSwitcherBtn = document.querySelector(".themeSwitcherBtn");
 themeSwitcherBtn.addEventListener("click", () => {
   document.body.classList.toggle("light-mode");
@@ -45,56 +46,48 @@ function addtodo() {
   itemCount();
   todoInput.value = "";
 }
+/*Filters */
 
-function showActive() {
-  const totalListItems = document.querySelectorAll(".todo");
-  const completedItems = document.querySelectorAll(".completed");
-  let order, remainingOrder;
-  order = remainingOrder = completedItems.length;
+document.querySelectorAll(".filter-sub-options button").forEach((e) => {
+  e.addEventListener("click", (event) => {
+    filterTodo(event.target.id);
+  });
+});
+function filterTodo(id) {
+  const allItems = todoList.querySelectorAll(".todo");
 
-  for (let i = 0; i < totalListItems.length; i++) {
-    let e = totalListItems[i];
-    if (e.classList.contains("completed")) {
-      gsap.to(e, {
-        y: e.offsetTop - 2 * 50 * i + 50 * ++order,
-        duration: 0.5,
+  switch (id) {
+    case "all":
+      allItems.forEach((item) => {
+        item.classList.remove("hidden");
       });
-    } else {
-      gsap.to(e, {
-        y: e.offsetTop - 2 * 50 * i + 50 * remainingOrder--,
-        duration: 0.75,
+      break;
+    case "active":
+      allItems.forEach((item) => {
+        if (item.querySelector("input").checked) {
+          item.classList.add("hidden");
+        } else {
+          item.classList.remove("hidden");
+        }
       });
-    }
+      break;
+    case "completed":
+      allItems.forEach((item) => {
+        if (item.querySelector("input").checked) {
+          item.classList.remove("hidden");
+        } else {
+          item.classList.add("hidden");
+        }
+      });
+      break;
   }
 }
 
-function showComp() {
-  const totalListItems = document.querySelectorAll(".todo");
-  const completedItems = document.querySelectorAll(".completed");
-  let order, remainingOrder;
-  order = remainingOrder = completedItems.length;
-
-  for (let i = 0; i < totalListItems.length; i++) {
-    let e = totalListItems[i];
-    if (e.classList.contains("completed")) {
-      gsap.to(e, {
-        y: e.offsetTop - 2 * 50 * i + 50 * --order,
-        duration: 0.75,
-      });
-    } else {
-      gsap.to(e, {
-        y: e.offsetTop - 2 * 50 * i + 50 * remainingOrder++,
-        duration: 0.5,
-      });
-    }
-  }
-}
 function clrComp() {
   const totaltItems = document.querySelectorAll(".todo");
   totaltItems.forEach((e) => {
     if (e.classList.contains("completed")) {
       e.remove();
     }
-    showComp();
   });
 }

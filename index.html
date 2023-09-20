@@ -56,7 +56,11 @@
               ><img src="images/icon-check.svg" alt="icon-check" /></span
           ></label>
           <label class="input-todo"
-            ><input type="text" id="input-todo" placeholder="Create a new todo" onchange="addtodo()"
+            ><input
+              type="text"
+              id="input-todo"
+              placeholder="Create a new todo"
+              onchange="addtodo()"
           /></label>
         </div>
         <div class="todo-list">
@@ -66,9 +70,9 @@
               <span class="numOfItems">0</span> items left
             </div>
             <div class="filter-sub-options">
-              <button onclick="showAll()">All</button>
-              <button onclick="showActive()">Active</button>
-              <button onclick="showComp()">Completed</button>
+              <button id="all">All</button>
+              <button id="active">Active</button>
+              <button id="completed">Completed</button>
             </div>
             <button onclick="clrComp()">Clear Completed</button>
           </div>
