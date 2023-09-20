@@ -171,7 +171,6 @@
 
             &:hover {
 
-                // color: var(--Light-Grayish-Blue-Hover);
                 button {
                     display: block;
                 }
@@ -200,7 +199,7 @@
 
                 &:hover {
                     cursor: pointer;
-                    color: $Very-Light-Gray;
+                    color: $Light-Grayish-Blue;
                 }
 
                 &:focus,
@@ -242,6 +241,7 @@
 
         .checkbox {
             border: 2px solid $Light-Grayish-Blue-light-mode;
+
             &:hover {
                 border: 2px solid transparent;
                 background: linear-gradient($Very-Light-Gray, $Very-Light-Gray) padding-box, $Check-Background border-box;
@@ -263,11 +263,16 @@
 
             .todo-options {
                 @include styles-light;
-                color: $Light-Grayish-Blue-light-mode;
+                color: $Dark-Grayish-Blue;
 
                 button {
                     &:hover {
                         color: $Very-Dark-Grayish-Blue-light-mode;
+                    }
+
+                    &:focus,
+                    &:active {
+                        color: $Bright-Blue;
                     }
                 }
             }

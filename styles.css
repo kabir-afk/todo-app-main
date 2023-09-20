@@ -166,7 +166,7 @@ body {
 }
 .todo-list .todo-options button:hover {
   cursor: pointer;
-  color: hsl(0, 0%, 98%);
+  color: hsl(234, 39%, 85%);
 }
 .todo-list .todo-options button:focus, .todo-list .todo-options button:active {
   color: hsl(220, 98%, 61%);
@@ -210,8 +210,11 @@ p {
 .light-mode .todo-list .todo-options {
   background-color: hsl(0, 0%, 98%);
   color: hsl(235, 19%, 35%);
-  color: hsl(233, 11%, 84%);
+  color: hsl(234, 11%, 52%);
 }
 .light-mode .todo-list .todo-options button:hover {
   color: hsl(235, 19%, 35%);
+}
+.light-mode .todo-list .todo-options button:focus, .light-mode .todo-list .todo-options button:active {
+  color: hsl(220, 98%, 61%);
 }/*# sourceMappingURL=styles.css.map */
