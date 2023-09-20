@@ -1,230 +1,275 @@
-:root {
     // ### Primary
-    --Bright-Blue: hsl(220, 98%, 61%);
-    --Check-Background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    $Bright-Blue: hsl(220, 98%, 61%);
+    $Check-Background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 
     // ### Neutral
 
     // ### Light Theme
-    --Very-Light-Gray: hsl(0, 0%, 98%);
-    --Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
-    --Light-Grayish-Blue: hsl(233, 11%, 84%);
-    --Dark-Grayish-Blue: hsl(236, 9%, 61%);
-    --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+    $Very-Light-Gray: hsl(0, 0%, 98%);
+    $Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
+    $Light-Grayish-Blue-light-mode: hsl(233, 11%, 84%);
+    $Dark-Grayish-Blue: hsl(236, 9%, 61%);
+    $Very-Dark-Grayish-Blue-light-mode: hsl(235, 19%, 35%);
 
     // ### Dark Theme
-    --Very-Dark-Blue: hsl(235, 21%, 11%);
-    --Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
-    --Light-Grayish-Blue: hsl(234, 39%, 85%);
-    --Light-Grayish-Blue-Hover: hsl(236, 33%, 92%); // (hover)
-    --Dark-Grayish-Blue: hsl(234, 11%, 52%);
-    --Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
-    --Very-Dark-Grayish-Blue-Alt: hsl(237, 14%, 26%);
-}
+    $Very-Dark-Blue: hsl(235, 21%, 11%);
+    $Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
+    $Light-Grayish-Blue: hsl(234, 39%, 85%);
+    $Light-Grayish-Blue-Hover: hsl(236, 33%, 92%); // (hover)
+    $Dark-Grayish-Blue: hsl(234, 11%, 52%);
+    $Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+    $Very-Dark-Grayish-Blue-Alt: hsl(237, 14%, 26%);
 
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-img {
-    max-width: 100%;
-}
-
-body {
-    background: url(images/bg-desktop-dark.jpg) var(--Very-Dark-Blue) no-repeat;
-    background-size: 100vw 300px;
-    font-size: 1.125rem;
-    font-family: 'Josefin Sans', sans-serif;
-    height: 100vh;
-}
-
-.body-bg-light-mode {
-    background: url(images/bg-desktop-light.jpg) no-repeat;
-}
-
-@mixin flex($justify-content, $align-items) {
-    display: flex;
-    justify-content: $justify-content;
-    align-items: $align-items;
-}
-
-@mixin styles {
-    width: 100%;
-    height: 65px;
-    background-color: var(--Very-Dark-Desaturated-Blue);
-    color: var(--Light-Grayish-Blue);
-}
-
-.hero-container {
-    margin: 9vh auto;
-    width: 38%;
-}
-
-.flex {
-    @include flex(space-between, center);
-
-    h1 {
-        text-transform: uppercase;
-        color: var(--Very-Light-Gray);
-        letter-spacing: 5px;
-    }
-
-    button {
-        border: none;
-        outline: none;
-        background: transparent;
-        cursor: pointer;
-    }
-}
-
-.light-mode {
-    --Very-Dark-Blue: var(--Very-Light-Gray);
-    --Very-Dark-Desaturated-Blue: var(--Very-Light-Grayish-Blue);
-    --Light-Grayish-Blue: var(--Light-Grayish-Blue);
-    --Dark-Grayish-Blue: var(--Dark-Grayish-Blue);
-    --Very-Dark-Grayish-Blue: var(--Very-Dark-Grayish-Blue);
-}
-
-.create-todo {
-    @include flex(none, center);
-    @include styles;
-    border-radius: 10px;
-    padding: 1.25rem 1.5625rem;
-    margin-top: 2em;
-    margin-bottom: 2em;
-}
-
-.checkbox {
-    border: 2px solid var(--Very-Dark-Grayish-Blue);
-    @include flex(center, center);
-    border-radius: 100px;
-    overflow: hidden;
-    margin-right: 1.5em;
-    height: fit-content;
-
-    input {
-        display: none;
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 
     img {
-        margin: 0 50%;
-        transform: translateX(-50%);
-        visibility: hidden;
+        max-width: 100%;
     }
 
-    .checked {
-        visibility: visible;
+    body {
+        background: url(images/bg-desktop-dark.jpg) $Very-Dark-Blue no-repeat;
+        background-size: 100vw 300px;
+        font-size: 1.125rem;
+        font-family: 'Josefin Sans', sans-serif;
+        height: 100vh;
     }
 
-    .custom-checkbox {
-        width: 20px;
-        aspect-ratio: 1;
-        background: var(--Check-Background);
-        cursor: pointer;
+    .body-bg-light-mode {
+        background: url(images/bg-desktop-light.jpg) no-repeat;
     }
 
-    input:checked+.custom-checkbox {
-        border: none;
-        background: transparent;
+    @mixin flex($justify-content, $align-items) {
+        display: flex;
+        justify-content: $justify-content;
+        align-items: $align-items;
     }
 
-    &:hover {
-        border: 2px solid transparent;
-        background: linear-gradient(var(--Very-Dark-Desaturated-Blue), var(--Very-Dark-Desaturated-Blue)) padding-box, var(--Check-Background) border-box;
-    }
-}
-
-.input-todo {
-    padding: 0;
-    width: 100%;
-    height: max-content;
-
-    input {
+    @mixin styles {
         width: 100%;
-        border: none;
-        outline: none;
-        background-color: transparent;
-        color: var(--Light-Grayish-Blue);
-        font-family: inherit;
-        font-size: inherit;
-        caret-color: var(--Bright-Blue);
+        height: 65px;
+        background-color: $Very-Dark-Desaturated-Blue;
+        color: $Light-Grayish-Blue;
     }
-}
 
-.todo-list {
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
+    .hero-container {
+        margin: 9vh auto;
+        width: 38%;
+    }
 
-    .todo {
-        @include flex(none, center);
-        border-top: 1px solid var(--Very-Dark-Grayish-Blue);
-        border-bottom: 1px solid var(--Very-Dark-Grayish-Blue);
-        background-color: var(--Very-Dark-Desaturated-Blue);
-        color: var(--Light-Grayish-Blue);
-        padding: 0.7em 1.5em;
-        cursor: pointer;
+    .flex {
+        @include flex(space-between, center);
+
+        h1 {
+            text-transform: uppercase;
+            color: $Very-Light-Gray;
+            letter-spacing: 5px;
+        }
 
         button {
-            cursor: pointer;
-            margin-left: auto;
             border: none;
             outline: none;
-            box-shadow: none;
             background: transparent;
+            cursor: pointer;
+        }
+    }
+
+    .create-todo {
+        @include flex(none, center);
+        @include styles;
+        border-radius: 10px;
+        padding: 1.25rem 1.5625rem;
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+
+    .checkbox {
+        border: 2px solid $Very-Dark-Grayish-Blue;
+        @include flex(center, center);
+        border-radius: 100px;
+        overflow: hidden;
+        margin-right: 1.5em;
+        height: fit-content;
+
+        input {
             display: none;
         }
 
+        img {
+            margin: 0 50%;
+            transform: translateX(-50%);
+            visibility: hidden;
+        }
+
+        .checked {
+            visibility: visible;
+        }
+
+        .custom-checkbox {
+            width: 20px;
+            aspect-ratio: 1;
+            background: $Check-Background;
+            cursor: pointer;
+        }
+
+        input:checked+.custom-checkbox {
+            border: none;
+            background: transparent;
+        }
+
         &:hover {
-            button {
-                display: block;
-            }
+            border: 2px solid transparent;
+            background: linear-gradient($Very-Dark-Desaturated-Blue, $Very-Dark-Desaturated-Blue) padding-box, $Check-Background border-box;
         }
     }
 
-    .completed {
-        color: var(--Dark-Grayish-Blue);
-        text-decoration: line-through;
-    }
+    .input-todo {
+        padding: 0;
+        width: 100%;
+        height: max-content;
 
-    .todo-options {
-        @include styles;
-        color: var(--Dark-Grayish-Blue);
-        padding: 0em 1.5625em;
-        @include flex(space-between, center);
-
-        button {
+        input {
+            width: 100%;
             border: none;
             outline: none;
             background-color: transparent;
-            font-size: 1rem;
+            color: $Light-Grayish-Blue;
             font-family: inherit;
-            color: inherit;
-            font-weight: inherit;
-
-            &:hover {
-                cursor: pointer;
-                color: var(--Very-Light-Gray);
-            }
-
-            &:focus,
-            &:active {
-                color: var(--Bright-Blue);
-            }
-        }
-
-        .filter-sub-options {
-            font-weight: 700;
+            font-size: inherit;
+            caret-color: $Bright-Blue;
         }
     }
-}
 
-p {
-    margin-top: 2em;
-    color: var(--Dark-Grayish-Blue);
-    transform: translateX(25%);
-}
+    .todo-list {
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+
+        .todo {
+            @include flex(none, center);
+            border-top: 1px solid $Very-Dark-Grayish-Blue;
+            border-bottom: 1px solid $Very-Dark-Grayish-Blue;
+            background-color: $Very-Dark-Desaturated-Blue;
+            color: $Light-Grayish-Blue;
+            padding: 0.7em 1.5em;
+            cursor: pointer;
+
+            button {
+                cursor: pointer;
+                margin-left: auto;
+                border: none;
+                outline: none;
+                box-shadow: none;
+                background: transparent;
+                display: none;
+            }
+
+            &:hover {
+
+                // color: var(--Light-Grayish-Blue-Hover);
+                button {
+                    display: block;
+                }
+            }
+        }
+
+        .completed {
+            color: $Dark-Grayish-Blue;
+            text-decoration: line-through;
+        }
+
+        .todo-options {
+            @include styles;
+            color: $Dark-Grayish-Blue;
+            padding: 0em 1.5625em;
+            @include flex(space-between, center);
+
+            button {
+                border: none;
+                outline: none;
+                background-color: transparent;
+                font-size: 1rem;
+                font-family: inherit;
+                color: inherit;
+                font-weight: inherit;
+
+                &:hover {
+                    cursor: pointer;
+                    color: $Very-Light-Gray;
+                }
+
+                &:focus,
+                &:active {
+                    color: $Bright-Blue;
+                }
+            }
+
+            .filter-sub-options {
+                font-weight: 700;
+            }
+        }
+    }
+
+    p {
+        margin-top: 2em;
+        color: $Dark-Grayish-Blue;
+        transform: translateX(25%);
+    }
+
+    .light-mode {
+        @mixin styles-light {
+            background-color: $Very-Light-Gray;
+            color: $Very-Dark-Grayish-Blue-light-mode;
+        }
+
+        .create-todo {
+
+            @include styles-light;
+
+            input {
+                color: $Very-Dark-Grayish-Blue-light-mode;
+
+                button {
+                    border: 1px solid $Light-Grayish-Blue-light-mode;
+                }
+            }
+        }
+
+        .checkbox {
+            border: 2px solid $Light-Grayish-Blue-light-mode;
+            &:hover {
+                border: 2px solid transparent;
+                background: linear-gradient($Very-Light-Gray, $Very-Light-Gray) padding-box, $Check-Background border-box;
+            }
+        }
+
+        .todo-list {
+
+            .todo {
+                border-top: 1px solid $Light-Grayish-Blue-light-mode;
+                border-bottom: 1px solid $Light-Grayish-Blue-light-mode;
+                background-color: $Very-Light-Gray;
+                color: $Very-Dark-Grayish-Blue-light-mode;
+            }
+
+            .completed {
+                color: $Light-Grayish-Blue-light-mode;
+            }
+
+            .todo-options {
+                @include styles-light;
+                color: $Light-Grayish-Blue-light-mode;
+
+                button {
+                    &:hover {
+                        color: $Very-Dark-Grayish-Blue-light-mode;
+                    }
+                }
+            }
+        }
+    }

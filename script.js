@@ -3,7 +3,6 @@ const todoList = document.querySelector(".todo-list");
 let numOfItems = document.querySelector(".numOfItems");
 let themeSwitcherBtn = document.querySelector(".themeSwitcherBtn");
 themeSwitcherBtn.addEventListener("click", () => {
-  console.log("hellow");
   document.body.classList.toggle("light-mode");
   themeSwitcherBtn.firstElementChild.src = document.body.classList.contains(
     "light-mode"
