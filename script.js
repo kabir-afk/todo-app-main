@@ -12,13 +12,7 @@ themeChange.to(themeSwitcherBtn, {
   duration: 2,
   ease: "elastic.out(1, 0.5)",
 });
-themeChange.to(
-  body,
-  {
-    backgroundColor: "hsl(0, 0%, 98%)",
-  },
-  "-=1.5"
-);
+
 let isReversed = true;
 
 themeSwitcherBtn.addEventListener("click", () => {
@@ -57,8 +51,15 @@ function addCompletedStyles(inputElement) {
 }
 
 function deleteTodo(e) {
-  e.parentElement.remove();
-  itemCount();
+  gsap.to(e.parentElement, {
+    x: 466,
+    ease:"sine.inOut",
+    duration: 0.5,
+    onComplete: () => {
+      e.parentElement.remove();
+      itemCount();
+    },
+  });
 }
 
 function addtodo() {
@@ -86,6 +87,11 @@ function filterTodo(id) {
     case "all":
       allItems.forEach((item) => {
         item.classList.remove("hidden");
+        gsap.from(item, {
+          duration: 1,
+          y: item.offsetTop + 10,
+          ease: "power3.out",
+        });
       });
       break;
     case "active":
@@ -95,6 +101,11 @@ function filterTodo(id) {
         } else {
           item.classList.remove("hidden");
         }
+        gsap.from(item, {
+          duration: 1,
+          y: item.offsetTop + 5,
+          ease: "power3.out",
+        });
       });
       break;
     case "completed":
@@ -104,6 +115,11 @@ function filterTodo(id) {
         } else {
           item.classList.add("hidden");
         }
+        gsap.from(item, {
+          duration: 1,
+          y: item.offsetTop + 10,
+          ease: "power3.out",
+        });
       });
       break;
   }

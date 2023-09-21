@@ -19,7 +19,7 @@ body {
 }
 
 .body-bg-light-mode {
-  background: url(images/bg-desktop-light.jpg) no-repeat;
+  background: url(images/bg-desktop-light.jpg) hsl(0, 0%, 98%) no-repeat;
 }
 
 .hero-container {

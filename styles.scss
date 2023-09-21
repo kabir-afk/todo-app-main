@@ -41,7 +41,7 @@
     }
 
     .body-bg-light-mode {
-        background: url(images/bg-desktop-light.jpg) no-repeat;
+        background: url(images/bg-desktop-light.jpg) $Very-Light-Gray no-repeat;
     }
 
     @mixin flex($justify-content, $align-items) {
