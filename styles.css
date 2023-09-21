@@ -121,7 +121,6 @@ body {
   display: flex;
   justify-content: none;
   align-items: center;
-  border-top: 1px solid hsl(233, 14%, 35%);
   border-bottom: 1px solid hsl(233, 14%, 35%);
   background-color: hsl(235, 24%, 19%);
   color: hsl(234, 39%, 85%);
@@ -202,7 +201,6 @@ p {
   background: linear-gradient(hsl(0, 0%, 98%), hsl(0, 0%, 98%)) padding-box, linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
 }
 .light-mode .todo-list .todo {
-  border-top: 1px solid hsl(233, 11%, 84%);
   border-bottom: 1px solid hsl(233, 11%, 84%);
   background-color: hsl(0, 0%, 98%);
   color: hsl(235, 19%, 35%);

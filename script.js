@@ -1,15 +1,41 @@
 const todoInput = document.querySelector("#input-todo");
 const todoList = document.querySelector(".todo-list");
 let numOfItems = document.querySelector(".numOfItems");
-// const filter = document.querySelector(".filter-sub-options");
 let themeSwitcherBtn = document.querySelector(".themeSwitcherBtn");
+let body = document.body;
+
+//Animations
+let themeChange = gsap.timeline({ paused: true });
+
+themeChange.to(themeSwitcherBtn, {
+  rotate: 360,
+  duration: 2,
+  ease: "elastic.out(1, 0.5)",
+});
+themeChange.to(
+  body,
+  {
+    backgroundColor: "hsl(0, 0%, 98%)",
+  },
+  "-=1.5"
+);
+let isReversed = true;
+
 themeSwitcherBtn.addEventListener("click", () => {
+  isReversed = !isReversed;
+
+  if (isReversed) {
+    themeChange.reverse();
+  } else {
+    themeChange.play();
+  }
   document.body.classList.toggle("light-mode");
   themeSwitcherBtn.firstElementChild.src = document.body.classList.contains(
     "light-mode"
   )
     ? "images/icon-moon.svg"
     : "images/icon-sun.svg";
+
   document.body.classList.toggle("body-bg-light-mode");
 });
 
