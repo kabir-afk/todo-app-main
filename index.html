@@ -43,7 +43,7 @@
         <div class="flex">
           <h1>Todo</h1>
           <button class="themeSwitcherBtn">
-            <img src="images/icon-sun.svg" alt="icon-sun"/>
+            <img src="images/icon-sun.svg" alt="icon-sun" />
           </button>
         </div>
         <div class="create-todo">
@@ -63,7 +63,7 @@
               onchange="addtodo()"
           /></label>
         </div>
-        <div class="todo-list">
+        <ul class="todo-list">
           <div class="todo-options">
             <!-- Add dynamic number -->
             <div class="items-left">
@@ -76,7 +76,7 @@
             </div>
             <button onclick="clrComp()">Clear Completed</button>
           </div>
-        </div>
+        </ul>
         <p>Drag and drop to reorder list</p>
       </div>
     </main>
@@ -94,6 +94,12 @@
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
       integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"
+      integrity="sha512-Eezs+g9Lq4TCCq0wae01s9PuNWzHYoCMkE97e2qdkYthpI0pzC3UGB03lgEHn2XM85hDOUF6qgqqszs+iXU4UA=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>

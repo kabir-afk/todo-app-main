@@ -3,6 +3,7 @@ const todoList = document.querySelector(".todo-list");
 let numOfItems = document.querySelector(".numOfItems");
 let themeSwitcherBtn = document.querySelector(".themeSwitcherBtn");
 let body = document.body;
+const allItems = todoList.querySelectorAll(".todo");
 
 //Animations
 let themeChange = gsap.timeline({ paused: true });
@@ -51,28 +52,29 @@ function addCompletedStyles(inputElement) {
 }
 
 function deleteTodo(e) {
-  gsap.to(e.parentElement, {
+  gsap.to(e.target.parentElement.parentElement, {
     x: 466,
-    ease:"sine.inOut",
+    ease: "sine.inOut",
     duration: 0.5,
     onComplete: () => {
-      e.parentElement.remove();
+      e.target.parentElement.parentElement.remove();
       itemCount();
     },
   });
 }
 
 function addtodo() {
-  const todoHTML = `<label class = "todo"><label class="checkbox"
+  const todoHTML = `<li class = "todo" draggable="true"><label class="checkbox"
   ><input type="checkbox" checked onclick="addCompletedStyles(this)"/><span
   class="custom-checkbox"
     ><img src="images/icon-check.svg" alt="icon-check" /></span
-></label>${todoInput.value}<button onclick = "deleteTodo(this)"><img src="images/icon-cross.svg" alt="icon-cross";"></button></label>`;
+></label>${todoInput.value}<button onclick = "deleteTodo(event)"><img src="images/icon-cross.svg" alt="icon-cross"></button></li>`;
 
   todoList.insertAdjacentHTML("afterbegin", todoHTML);
   itemCount();
   todoInput.value = "";
 }
+
 /*Filters */
 
 document.querySelectorAll(".filter-sub-options button").forEach((e) => {
@@ -89,7 +91,7 @@ function filterTodo(id) {
         item.classList.remove("hidden");
         gsap.from(item, {
           duration: 1,
-          y: item.offsetTop + 10,
+          y: item.offsetTop + 5,
           ease: "power3.out",
         });
       });
@@ -97,9 +99,9 @@ function filterTodo(id) {
     case "active":
       allItems.forEach((item) => {
         if (item.querySelector("input").checked) {
-          item.classList.add("hidden");
-        } else {
           item.classList.remove("hidden");
+        } else {
+          item.classList.add("hidden");
         }
         gsap.from(item, {
           duration: 1,
@@ -111,13 +113,13 @@ function filterTodo(id) {
     case "completed":
       allItems.forEach((item) => {
         if (item.querySelector("input").checked) {
-          item.classList.remove("hidden");
-        } else {
           item.classList.add("hidden");
+        } else {
+          item.classList.remove("hidden");
         }
         gsap.from(item, {
           duration: 1,
-          y: item.offsetTop + 10,
+          y: item.offsetTop + 5,
           ease: "power3.out",
         });
       });
@@ -133,3 +135,9 @@ function clrComp() {
     }
   });
 }
+
+// code for reordering todolists , boon on Sortable JS 
+
+Sortable.create(todoList, {
+  animation: 250,
+});
