@@ -135,7 +135,7 @@ function filterTodo(className) {
 function clrComp() {
   const totaltItems = document.querySelectorAll(".todo");
   totaltItems.forEach((e) => {
-    if (e.classList.contains("completed")) {
+    if (e.classList.contains("completed-state")) {
       gsap.to(e, {
         x: 466,
         ease: "sine.inOut",

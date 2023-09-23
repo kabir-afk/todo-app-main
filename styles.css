@@ -184,7 +184,7 @@ body {
 .todo-list .hidden {
   display: none;
 }
-.todo-list .completed {
+.todo-list .completed-state {
   color: hsl(234, 11%, 52%);
   text-decoration: line-through;
 }
@@ -286,7 +286,7 @@ p {
   background-color: hsl(0, 0%, 98%);
   color: hsl(235, 19%, 35%);
 }
-.light-mode .todo-list .completed {
+.light-mode .todo-list .completed-state {
   color: hsl(233, 11%, 84%);
 }
 .light-mode .todo-list .todo-options {
