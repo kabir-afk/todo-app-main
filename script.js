@@ -64,7 +64,7 @@ function deleteTodo(e) {
 }
 
 function addtodo() {
-  const todoHTML = `<li class = "todo" draggable="true"><label class="checkbox"
+  const todoHTML = `<li class = "todo"><label class="checkbox"
   ><input type="checkbox" checked onclick="addCompletedStyles(this)"/><span
   class="custom-checkbox"
     ><img src="images/icon-check.svg" alt="icon-check" /></span
@@ -78,6 +78,11 @@ function addtodo() {
 /*Filters */
 
 document.querySelectorAll(".filter-sub-options button").forEach((e) => {
+  e.addEventListener("click", (event) => {
+    filterTodo(event.target.id);
+  });
+});
+document.querySelectorAll(".filter-sub-options-mobile button").forEach((e) => {
   e.addEventListener("click", (event) => {
     filterTodo(event.target.id);
   });
@@ -131,12 +136,19 @@ function clrComp() {
   const totaltItems = document.querySelectorAll(".todo");
   totaltItems.forEach((e) => {
     if (e.classList.contains("completed")) {
-      e.remove();
+      gsap.to(e, {
+        x: 466,
+        ease: "sine.inOut",
+        duration: 0.5,
+        onComplete: () => {
+          e.remove();
+        },
+      });
     }
   });
 }
 
-// code for reordering todolists , boon on Sortable JS 
+// code for reordering todolists , boon of Sortable JS 
 
 Sortable.create(todoList, {
   animation: 250,

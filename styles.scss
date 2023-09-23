@@ -20,6 +20,53 @@
     $Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
     $Very-Dark-Grayish-Blue-Alt: hsl(237, 14%, 26%);
 
+    @mixin flex($justify-content, $align-items) {
+        display: flex;
+        justify-content: $justify-content;
+        align-items: $align-items;
+    }
+
+    @mixin styles {
+        width: 100%;
+        height: 65px;
+        background-color: $Very-Dark-Desaturated-Blue;
+        color: $Light-Grayish-Blue;
+    }
+
+    @mixin button-styling {
+        button {
+            border: none;
+            outline: none;
+            background-color: transparent;
+            font-size: 1rem;
+            font-family: inherit;
+            color: inherit;
+            font-weight: inherit;
+
+            &:hover {
+                cursor: pointer;
+                color: $Light-Grayish-Blue;
+            }
+
+            &:focus,
+            &:active {
+                color: $Bright-Blue;
+            }
+        }
+    }
+
+    @mixin in-between-viewports {
+        @media screen and (max-width:1165px) {
+            @content;
+        }
+    }
+
+    @mixin mobile {
+        @media screen and (max-width:740px) {
+            @content;
+        }
+    }
+
     *,
     *::before,
     *::after {
@@ -38,28 +85,33 @@
         font-size: 1.125rem;
         font-family: 'Josefin Sans', sans-serif;
         height: 100vh;
+
+        @include mobile() {
+            background: url(images/bg-mobile-dark.jpg) $Very-Dark-Blue no-repeat;
+            background-size: 100vw 200px;
+        }
     }
 
     .body-bg-light-mode {
         background: url(images/bg-desktop-light.jpg) $Very-Light-Gray no-repeat;
-    }
 
-    @mixin flex($justify-content, $align-items) {
-        display: flex;
-        justify-content: $justify-content;
-        align-items: $align-items;
-    }
-
-    @mixin styles {
-        width: 100%;
-        height: 65px;
-        background-color: $Very-Dark-Desaturated-Blue;
-        color: $Light-Grayish-Blue;
+        @include mobile() {
+            background: url(images/bg-mobile-light.jpg) $Very-Light-Gray no-repeat;
+            background-size: 100vw 200px;
+        }
     }
 
     .hero-container {
         margin: 9vh auto;
         width: 38%;
+
+        @include in-between-viewports() {
+            width: 60%;
+        }
+
+        @include mobile() {
+            width: 90%;
+        }
     }
 
     .flex {
@@ -192,36 +244,35 @@
             padding: 0em 1.5625em;
             @include flex(space-between, center);
 
-            button {
-                border: none;
-                outline: none;
-                background-color: transparent;
-                font-size: 1rem;
-                font-family: inherit;
-                color: inherit;
-                font-weight: inherit;
-
-                &:hover {
-                    cursor: pointer;
-                    color: $Light-Grayish-Blue;
-                }
-
-                &:focus,
-                &:active {
-                    color: $Bright-Blue;
-                }
-            }
+            @include button-styling();
 
             .filter-sub-options {
                 font-weight: 700;
+
+                @include mobile() {
+                    display: none;
+                }
             }
         }
     }
 
     p {
         margin-top: 2em;
+        text-align: center;
         color: $Dark-Grayish-Blue;
-        transform: translateX(25%);
+    }
+
+    .filter-sub-options-mobile {
+        @include styles();
+        @include button-styling();
+        border-radius: 10px;
+        margin-top: 2em;
+        display: none;
+
+        @include mobile() {
+            @include flex(center, center);
+            gap: 1em;
+        }
     }
 
     .light-mode {
@@ -279,5 +330,9 @@
                     }
                 }
             }
+        }
+
+        .filter-sub-options-mobile {
+            @include styles-light();
         }
     }
