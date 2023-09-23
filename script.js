@@ -36,7 +36,7 @@ themeSwitcherBtn.addEventListener("click", () => {
 
 function itemCount() {
   const totalListItems = document.querySelectorAll(".todo");
-  const completedItems = document.querySelectorAll(".completed");
+  const completedItems = document.querySelectorAll(".completed-state");
   const remainingItems = totalListItems.length - completedItems.length;
   numOfItems.innerText = remainingItems;
 }
@@ -47,7 +47,7 @@ function addCompletedStyles(inputElement) {
   const isChecked = inputElement.checked;
 
   iconCheck.classList.toggle("checked", !isChecked);
-  todo.classList.toggle("completed", !isChecked);
+  todo.classList.toggle("completed-state", !isChecked);
   itemCount();
 }
 
@@ -79,18 +79,18 @@ function addtodo() {
 
 document.querySelectorAll(".filter-sub-options button").forEach((e) => {
   e.addEventListener("click", (event) => {
-    filterTodo(event.target.id);
+    filterTodo(event.target.className);
   });
 });
 document.querySelectorAll(".filter-sub-options-mobile button").forEach((e) => {
   e.addEventListener("click", (event) => {
-    filterTodo(event.target.id);
+    filterTodo(event.target.className);
   });
 });
-function filterTodo(id) {
+function filterTodo(className) {
   const allItems = todoList.querySelectorAll(".todo");
 
-  switch (id) {
+  switch (className) {
     case "all":
       allItems.forEach((item) => {
         item.classList.remove("hidden");
