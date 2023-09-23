@@ -35,7 +35,7 @@ body {
 }
 
 .hero-container {
-  margin: 9vh auto;
+  margin: 10vh auto;
   width: 38%;
 }
 @media screen and (max-width: 1165px) {
@@ -45,7 +45,8 @@ body {
 }
 @media screen and (max-width: 740px) {
   .hero-container {
-    width: 90%;
+    margin-top: 7vh;
+    width: calc(100vw - 50px);
   }
 }
 
@@ -57,7 +58,7 @@ body {
 .flex h1 {
   text-transform: uppercase;
   color: hsl(0, 0%, 98%);
-  letter-spacing: 5px;
+  letter-spacing: 13px;
 }
 .flex button {
   border: none;
@@ -74,10 +75,17 @@ body {
   height: 65px;
   background-color: hsl(235, 24%, 19%);
   color: hsl(234, 39%, 85%);
-  border-radius: 10px;
+  border-radius: 7.5px;
   padding: 1.25rem 1.5625rem;
   margin-top: 2em;
   margin-bottom: 2em;
+}
+@media screen and (max-width: 740px) {
+  .create-todo {
+    font-size: 14px;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+  }
 }
 
 .checkbox {
@@ -87,7 +95,7 @@ body {
   align-items: center;
   border-radius: 100px;
   overflow: hidden;
-  margin-right: 1.5em;
+  margin-right: 1em;
   height: -moz-fit-content;
   height: fit-content;
 }
@@ -96,7 +104,6 @@ body {
 }
 .checkbox img {
   margin: 0 50%;
-  transform: translateX(-50%);
   visibility: hidden;
 }
 .checkbox .checked {
@@ -107,6 +114,9 @@ body {
   aspect-ratio: 1;
   background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .checkbox input:checked + .custom-checkbox {
   border: none;
@@ -135,7 +145,7 @@ body {
 }
 
 .todo-list {
-  border-radius: 10px;
+  border-radius: 7.5px;
   overflow: hidden;
   position: relative;
 }
@@ -149,6 +159,11 @@ body {
   padding: 0.7em 1.5em;
   cursor: pointer;
 }
+@media screen and (max-width: 740px) {
+  .todo-list .todo {
+    font-size: 13px;
+  }
+}
 .todo-list .todo button {
   cursor: pointer;
   margin-left: auto;
@@ -157,6 +172,11 @@ body {
   box-shadow: none;
   background: transparent;
   display: none;
+}
+@media screen and (max-width: 740px) {
+  .todo-list .todo button {
+    display: block;
+  }
 }
 .todo-list .todo:hover button {
   display: block;

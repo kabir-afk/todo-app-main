@@ -102,7 +102,7 @@
     }
 
     .hero-container {
-        margin: 9vh auto;
+        margin: 10vh auto;
         width: 38%;
 
         @include in-between-viewports() {
@@ -110,7 +110,8 @@
         }
 
         @include mobile() {
-            width: 90%;
+            margin-top: 7vh;
+            width: calc(100vw - 50px);
         }
     }
 
@@ -120,7 +121,7 @@
         h1 {
             text-transform: uppercase;
             color: $Very-Light-Gray;
-            letter-spacing: 5px;
+            letter-spacing: 13px;
         }
 
         button {
@@ -134,10 +135,16 @@
     .create-todo {
         @include flex(none, center);
         @include styles;
-        border-radius: 10px;
+        border-radius: 7.5px;
         padding: 1.25rem 1.5625rem;
         margin-top: 2em;
         margin-bottom: 2em;
+
+        @include mobile() {
+            font-size: 14px;
+            margin-top: 0.5em;
+            margin-bottom: 1em;
+        }
     }
 
     .checkbox {
@@ -145,7 +152,7 @@
         @include flex(center, center);
         border-radius: 100px;
         overflow: hidden;
-        margin-right: 1.5em;
+        margin-right: 1em;
         height: fit-content;
 
         input {
@@ -154,7 +161,6 @@
 
         img {
             margin: 0 50%;
-            transform: translateX(-50%);
             visibility: hidden;
         }
 
@@ -167,6 +173,7 @@
             aspect-ratio: 1;
             background: $Check-Background;
             cursor: pointer;
+            @include flex(center, center);
         }
 
         input:checked+.custom-checkbox {
@@ -198,7 +205,7 @@
     }
 
     .todo-list {
-        border-radius: 10px;
+        border-radius: 7.5px;
         overflow: hidden;
         position: relative;
 
@@ -210,6 +217,10 @@
             padding: 0.7em 1.5em;
             cursor: pointer;
 
+            @include mobile() {
+                font-size: 13px;
+            }
+
             button {
                 cursor: pointer;
                 margin-left: auto;
@@ -218,6 +229,10 @@
                 box-shadow: none;
                 background: transparent;
                 display: none;
+
+                @include mobile() {
+                    display: block;
+                }
             }
 
             &:hover {
